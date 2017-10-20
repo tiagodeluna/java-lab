@@ -1,4 +1,4 @@
-package br.com.alura.threads.buscatextual;
+package br.com.alura.threads.textualsearch;
 
 import java.io.File;
 import java.io.FileNotFoundException;

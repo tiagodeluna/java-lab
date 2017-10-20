@@ -1,4 +1,4 @@
-package br.com.alura.threads.buscatextual;
+package br.com.alura.threads.textualsearch;
 
 public class TextualSearchMain {
 

@@ -1,5 +1,5 @@
 
-package br.com.alura.threads.calculadora;
+package br.com.alura.threads.calculator;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
