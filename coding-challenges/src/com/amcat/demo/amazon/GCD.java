@@ -1,13 +1,13 @@
-package com.amazon.gcd;
+package com.amcat.demo.amazon;
 
 import java.util.Arrays;
 
-public class GCDSolution {
+public class GCD {
 
 	public static void main(String[] args) {
 		int[] numbers = {18, 9, 36, 90};
 
-		GCDSolution main = new GCDSolution();
+		GCD main = new GCD();
 		System.out.println("GCD is " + main.generalizedGCD(numbers.length, numbers));
 	}
 	

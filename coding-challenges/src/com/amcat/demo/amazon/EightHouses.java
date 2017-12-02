@@ -1,15 +1,15 @@
-package com.amazon.eighthouses;
+package com.amcat.demo.amazon;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EightHousesSolution {
+public class EightHouses {
 
 	public static void main(String[] args) {
 		int[] states = {1, 0, 0, 0, 0, 1, 0, 0};
 		int days = 1;
 		
-		EightHousesSolution main = new EightHousesSolution();
+		EightHouses main = new EightHouses();
 		System.out.println(main.cellCompete(states, days));
 	}
 	
