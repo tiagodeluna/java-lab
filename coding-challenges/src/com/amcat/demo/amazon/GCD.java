@@ -2,6 +2,11 @@ package com.amcat.demo.amazon;
 
 import java.util.Arrays;
 
+/**
+ * Finds the greatest common divider from all given integers. 
+ * 
+ * @author Tiago Luna
+ */
 public class GCD {
 
 	public static void main(String[] args) {

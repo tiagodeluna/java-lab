@@ -3,6 +3,15 @@ package com.amcat.demo.amazon;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * In a neighborhood formed by eight houses (represented by an Array), the houses compete with 
+ * each other every day. For each house, the "competition" follows the following logic:
+ * 	- If both neighbors are active (1) or inactive (0), the current house will be inactive next day.
+ *  - In the other cases, the current house will be active in the next day.
+ * The algorithm processes the state of all houses after a given number of days. 
+ * 
+ * @author Tiago Luna
+ */
 public class EightHouses {
 
 	public static void main(String[] args) {
@@ -23,57 +32,57 @@ public class EightHouses {
     }
     
     /**
-     * Represents an arrangement of houses or Cells.
+     * Represents an arrangement of houses or Houses.
      * @author tiago.luna
      */
     public class Neighborhood {
 
-    	private Cell first;
+    	private House first;
     	
     	public Neighborhood(int[] states) {
     		if (states.length != 8) {
     			throw new IllegalArgumentException();
     		}
     		
-    		Cell current = null;
+    		House current = null;
     		for(int i = 0; i < states.length; i++) {
-    			Cell c = new Cell(states[i]);
+    			House c = new House(states[i]);
     			
     			if (current == null) {
     				first = c;
     				current = first;
     			}
     			else {
-    				c.setPreviousCell(current);
-    				current.setNextCell(c);
+    				c.setPrevious(current);
+    				current.setNext(c);
     				current = c;
     			}
     		}
     	}
     	
     	public void advanceOneDay() {
-    		Cell c = first;
+    		House c = first;
     		
     		while(c != null) {
     			c.changeState();
-    			c = c.getNextCell();
+    			c = c.getNext();
     		}
     		
     		c = first;
     		while(c != null) {
     			c.setState(c.getStateNextDay());
-    			c = c.getNextCell();
+    			c = c.getNext();
     		}
     	}
     	
     	public List<Integer> toList() {
     		List<Integer> list = new ArrayList<>();
     		
-    		Cell c = first;
+    		House c = first;
     		
     		while(c != null) {
     			list.add(c.getState());
-    			c = c.getNextCell();
+    			c = c.getNext();
     		}
     		
     		return list;
@@ -84,18 +93,18 @@ public class EightHouses {
      * Represents a House that can be active or innactive, according to its neighbours' state.
      * @author tiago.luna
      */
-    public class Cell {
+    public class House {
 
     	private int state;
     	private int stateNextDay;
-    	private Cell previousCell;
-    	private Cell nextCell;
+    	private House previous;
+    	private House next;
     	
-    	public Cell() {
+    	public House() {
     		super();
     	}
     	
-    	public Cell(int state) {
+    	public House(int state) {
     		this.state = state;
     	}
 
@@ -106,16 +115,16 @@ public class EightHouses {
     		this.state = state;
     	}
 
-    	public void setPreviousCell(Cell previousCell) {
-    		this.previousCell = previousCell;
+    	public void setPrevious(House previous) {
+    		this.previous = previous;
     	}
 
-    	public Cell getNextCell() {
-    		return nextCell;
+    	public House getNext() {
+    		return next;
     	}
 
-    	public void setNextCell(Cell nextCell) {
-    		this.nextCell = nextCell;
+    	public void setNext(House next) {
+    		this.next = next;
     	}
 
     	public int getStateNextDay() {
@@ -123,8 +132,8 @@ public class EightHouses {
     	}
 
     	public void changeState() {
-    		int prevState = previousCell != null && previousCell.state == 1 ? 1 : 0;
-    		int nextState = nextCell != null && nextCell.state == 1 ? 1 : 0;
+    		int prevState = previous != null && previous.state == 1 ? 1 : 0;
+    		int nextState = next != null && next.state == 1 ? 1 : 0;
     		stateNextDay = prevState == nextState ? 0 : 1;
     	}
     }
