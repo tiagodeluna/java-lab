@@ -1,4 +1,4 @@
-package com.amcat.demo.amazon;
+package com.amazn.test;
 
 import java.util.Arrays;
 
