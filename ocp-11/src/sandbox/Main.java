@@ -1,28 +1,65 @@
 package sandbox;
 
-public class Main {
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+public abstract class Main {
 
     public static void main (String [] args) {
-        final int score1 = 1, score2 = 7;
-        char myScore = 7;
-        switch(myScore) {
-            default:
-            case 2:
-            case 6:
-            case score1:
-                System.out.println();
-                break;
-            case score2:
-                System.out.println();
+        //System.out.println(reverseSentence("1 2 3"));
+        System.out.println(mostFrequentDigits(new int[]{25, 2, 5, 17, 91}));
+    }
+
+    static String reverseSentence(String sentence) {
+        StringBuilder reversed = new StringBuilder();
+        String[] words = sentence.split(" ");
+
+        for(int i = words.length-1; i >= 0; i--) {
+            reversed.append(words[i]).append(" ");
         }
 
-        int monday = 3 + (int)2.799;
-        double tuesday = 56L;
-        int wednesday = Integer.MAX_VALUE;
-        short thursday = (short)Integer.MAX_VALUE;
-        float friday = 2.7_9_9f;
+        return reversed.toString().trim();
+    }
 
-        System.out.print(monday+"|"+tuesday+"|"+wednesday+"|"+thursday+"|"+friday);
+    static int[] mostFrequentDigits(int[] array) {
+        Map<Integer, Integer> digitsMap = new HashMap<>();
+
+        for(int n : array) {
+            String str = Integer.toString(n);
+            Arrays.stream(str.split(""))
+                    .mapToInt(Integer::parseInt)
+                    .forEach(o -> {
+                        digitsMap.compute(o, (key, val) -> val != null ? val+1 : 1);
+                    });
+        }
+
+        int max = digitsMap.values().stream().max(Integer::compareTo).get();
+        System.out.println(digitsMap);
+        int []result = digitsMap.entrySet().stream().filter(entry -> entry.getValue().equals(max))
+                .sorted((a,b) -> b.getKey().compareTo(a.getKey()))
+                .mapToInt(Map.Entry::getKey)
+                .toArray();
+
+        StringBuilder strBuilder = new StringBuilder();
+        for (int i : result) {
+            strBuilder.append(i).append(",");
+        }
+        System.out.println(strBuilder.toString());
+
+        return result;
+    }
+
+
+    static int addTwoDigits(int n) {
+        String strInt = Integer.toString(n);
+
+        return Arrays.stream(strInt.split(""))
+                .mapToInt(Integer::parseInt)
+                .reduce((a,b) -> {
+                    System.out.println(String.format("a=%s,b=%s",a,b));
+                    return a+b;
+                }).getAsInt();
     }
 
 }

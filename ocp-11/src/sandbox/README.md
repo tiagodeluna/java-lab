@@ -3,22 +3,35 @@
 ## Assessment Tests - Part I
 
 1. [ok] B = 15
-2. [--] C //Correct answers are C,D,E
+2. [--] C //Correct = C,D,E
 3. [ok] B = 3.0-11.0-2
-4. [--] C = 3 //Correct answer is D = 4
+4. [--] C = 3 //Correct = D (4)
 5. [ok] E = compiler error on line 7
-6. [--] E //Correct answer is G
-7. [--] A //Correct answer is G = does not compile
+6. [--] E //Correct = G
+7. [--] A //Correct = G (does not compile)
 8. [ok] A,C,F
-9. [--] D //Correct answer is C = void var() {}
+9. [--] D //Correct = C ( void var() {} )
 10. [ok] A,C,E = CanSwim,Amphibian,Object
-11. [--] D,E //Correct answer is B,D
+11. [--] D,E //Correct = B,D
 12. [ok] D = None of the above
-13. 
+13. [--] E //Correct = C
+14. [--] G //Correct = F (it has 3 copiler errors)
+15. [ok] A,C,F = JDK contains a compiler, javac creates bytecodes file & JVM is contained in the JDK
+16. [ok] C,E,F
+17. [--] E //Correct = C
+18. [ok] B,E,F
+19. [ok] C,D
+20. [ok] B,C
+21. [ok] B,C,F
+22. [--] B,C //Correct = A
 
-**Result: ?? / ?? (??%)**
+**Result: 12 / 22 (54%)**
 
----------------------
+-----
+
+## Assessment Tests - Part II
+
+-----
 
 ## Chapter 11 - Modules
 
