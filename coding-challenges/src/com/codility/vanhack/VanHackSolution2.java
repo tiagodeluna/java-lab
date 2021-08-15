@@ -3,8 +3,8 @@ package com.codility.vanhack;
 public class VanHackSolution2 {
 
 	public static void main(String[] args) {
-		// Foi um teste de SQL, implementado em POSTGRESQL. A solução
-		//está listada abaixo.
+		// Foi um teste de SQL, implementado em POSTGRESQL. A solucao
+		//esta listada abaixo.
 		
 		/*
 			SELECT recipient AS account_name FROM

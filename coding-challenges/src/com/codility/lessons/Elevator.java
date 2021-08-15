@@ -21,13 +21,13 @@ public class Elevator {
 
     public static int solution(int[] A, int[] B, int M, int X, int Y) {
     	Elevator el = new Elevator();
-    	//Teste 1 - não implementado
+    	//Teste 1 - nao implementado
         if (A == null || B == null || A.length == 0 || B.length == 0 || X < 1 || Y < 1) {
             return 0;
         }
         int res = 0;
         Queue<Task> taskQueue = new LinkedList<>();
-        //Teste 2 - não implementado
+        //Teste 2 - nï¿½o implementado
         for (int i = 0; i < A.length; i++) {
             if (A[i] > Y) {
                 throw new RuntimeException("This should not happen!");
