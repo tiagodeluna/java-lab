@@ -1,4 +1,4 @@
-package com.ebay.test;
+package com.codesignal.eba7;
 
 /**
  * Reverts the order of words of a given sentence.

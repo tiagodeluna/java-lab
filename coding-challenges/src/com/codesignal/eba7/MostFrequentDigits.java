@@ -1,4 +1,4 @@
-package com.ebay.test;
+package com.codesignal.eba7;
 
 import java.util.Arrays;
 import java.util.Comparator;
