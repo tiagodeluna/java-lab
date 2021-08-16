@@ -20,12 +20,12 @@ public class CollectionSamples {
     }
 
     private static void listOperations() {
-        System.out.println("Creating a LIST with 3 elements (immutable)...");
+        System.out.println("Creating an IMMUTABLE LIST with 3 elements...");
         var list1 = List.of(1, 2, 3);
         System.out.println("> var list1 = List.of(1,2,3)");
         System.out.println(String.format("list1 = %s (size: %s)", list1, list1.size()));
 
-        System.out.println("Creating a new LIST (mutable) from the immutable list...");
+        System.out.println("Creating a new MUTABLE LIST from the previous list...");
         var list2 = new ArrayList<>(list1);
         System.out.println("> var list2 = new ArrayList<>(list1)");
         System.out.println(String.format("list2 = %s (size: %s)", list2, list2.size()));
