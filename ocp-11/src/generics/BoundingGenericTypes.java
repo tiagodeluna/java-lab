@@ -1,14 +1,19 @@
 package generics;
 
+import generics.model.Crate;
+
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 /**
  * A wildcard generic type is an unknown generic type represented with '?'.
  * It can be used in three different ways:
- *  - Unbounded Wildcards
- *  - Upper-Bounded Wildcards (uses extends)
- *  - Lower-Bounded Wildcards (uses super)
+ *  - Unbounded Wildcards : immutable, accepts instances of any type.
+ *  - Upper-Bounded Wildcards : immutable, uses "extends", accepts the referred class or its sub-classes, collection becomes a producer.
+ *  - Lower-Bounded Wildcards : uses "super", accepts the referred class or its super-classes, collection becomes a consumer.
  */
 public class BoundingGenericTypes {
 
@@ -47,8 +52,9 @@ public class BoundingGenericTypes {
     }
 
     /**
-     * This is basically a list of "whatever", so we can use any type here.
-     * That wouldn't be the case if we used List<Object> instead.
+     * This is basically a list of "whatever". It is treated as if all elements are of type Object, but at the same time
+     * it accepts a list of any type (List<String>, List<Pokemon>, etc). That wouldn't be the case if we used
+     * List<Object> instead.
      * @param list List of whatever.
      */
     static void demoUnboundedWildcard(List<?> list) {
@@ -56,6 +62,8 @@ public class BoundingGenericTypes {
             System.out.println(o);
         }
 //        list.add("text"); //Does not compile since the unbounded generics are immutable
+        list.removeIf(o -> o instanceof String);
+//        list.removeIf(String::isEmpty); //Does not compile because isEmpty is not defined on Object
     }
     /**
      * Using '? extends', or Upper-Bounded Wildcards, the list becomes logically immutable, since it is not possible to infer
@@ -79,10 +87,10 @@ public class BoundingGenericTypes {
      * accepted when adding elements.
      */
     static void demoLowerBoundedWildcard(List<? super Car> list) {
-        //None of these lines compile, since the list becase a consumer
-//        Car car = list.get(0); //Maybe it is a Vehicle...
-//        Vehicle vehicle = list.get(1);
-//        Ferrari ferrari = list.get(2);
+        //None of these lines compile, since the list became a consumer
+//        Car car = list.get(0); //Maybe it is a Vehicle or Object...
+//        Vehicle vehicle = list.get(1); //Maybe it is an Object...
+//        Ferrari ferrari = list.get(2); //It could not be a Ferrari...
 
         // Only the exact type or subtypes are allowed
 //        list.add(new Vehicle());

@@ -59,3 +59,35 @@
 
 **Result: 15 / 21 (71%)**
 
+## Chapter 14 - Collections and Generics
+
+1. [ok] B = ArrayList
+2. [ok] D = TreeMap
+3. [ok] C,G
+4. [ok] D = hiola
+5. [ok] B,F
+6. [ok] B
+7. [--] A,B //Correct = A,D (it compiles, but the output is indeterminate)
+8. [--] B,E,F //Correct = B,F
+
+9.
+10.
+11.
+12.
+13.
+14.
+15.
+16.
+17.
+
+18.
+19.
+20.
+21.
+22.
+23.
+24.
+25.
+
+**Result: ?? / ?? (??%)
+

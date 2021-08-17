@@ -1,6 +1,7 @@
 package collections;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,7 +11,14 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
-public class CollectionSamples {
+/**
+ * The Java Collection Framework includes 4 types of data structures:
+ *  - List: extends Collection, ordered (by index), allow duplicates, implemented by ArrayList and LinkedList.
+ *  - Set: extends Collection, does not allow duplicates, implemented by HashSet and TreeSet.
+ *  - Queue: extends Collection, FIFO or LIFO, implemented by LinkedList.
+ *  - Map: does not extend Collection, has unique keys to values, implemented by HashMap and TreeMap.
+ */
+public class CollectionsAndMap {
 
     public static void main(String... args) {
         listOperations();
@@ -24,6 +32,7 @@ public class CollectionSamples {
         var list1 = List.of(1, 2, 3);
         System.out.println("> var list1 = List.of(1,2,3)");
         System.out.println(String.format("list1 = %s (size: %s)", list1, list1.size()));
+        System.out.println("> list1 instanceof Collection = " + (list1 instanceof Collection));
 
         System.out.println("Creating a new MUTABLE LIST from the previous list...");
         var list2 = new ArrayList<>(list1);
@@ -49,6 +58,7 @@ public class CollectionSamples {
         myMap.put("3", 3);
         myMap.put("1", 4);
         System.out.println(String.format("Map = %s (size: %s)", myMap, myMap.size()));
+        System.out.println("> Map instanceof Collection = " + (myMap instanceof Collection));
 
         System.out.println("> Map.containsValue(\"1\") = " + myMap.containsValue(1));
         System.out.println(String.format("Map = %s (size: %s)", myMap, myMap.size()));
@@ -77,6 +87,7 @@ public class CollectionSamples {
         mySet.add("A");
         mySet.add("C");
         System.out.println(String.format("Set = %s (size: %s)", mySet, mySet.size()));
+        System.out.println("> Set instanceof Collection = " + (mySet instanceof Collection));
 
         System.out.println("> Set.remove(\"D\") = " + mySet.remove("D"));
         System.out.println(String.format("Set = %s (size: %s)", mySet, mySet.size()));
@@ -94,6 +105,7 @@ public class CollectionSamples {
         myQueue.add(3);
         myQueue.add(4);
         System.out.println(String.format("Queue = %s (size: %s)", myQueue, myQueue.size()));
+        System.out.println("> Queue instanceof Collection = " + (myQueue instanceof Collection));
 
         System.out.println("> Queue.remove() = " + myQueue.remove());
         System.out.println(String.format("Queue = %s (size: %s)", myQueue, myQueue.size()));
