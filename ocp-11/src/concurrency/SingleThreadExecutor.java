@@ -19,8 +19,8 @@ public class SingleThreadExecutor {
 
             //PLEASE CHOOSE WHICH METHOD YOU WANT TO USE TO RUN THE TASKS!
             //runWithExecuteAndSubmit(service);
-            //runWithInvokeAll(service);
-            runWithInvokeAny(service);
+            runWithInvokeAll(service);
+            //runWithInvokeAny(service);
         } finally {
             if (service != null) {
                 // Rejects any new tasks and completes the existing ones
@@ -67,14 +67,16 @@ public class SingleThreadExecutor {
 
     private static void runWithInvokeAll(ExecutorService service) throws InterruptedException, ExecutionException {
         Callable<String> task1 = () -> "Result 1";
-        Callable<String> task2 = () -> "Result 2";
-        Callable<String> task3 = () -> "Result 3";
+        Callable<String> task2 = () -> {TimeUnit.SECONDS.sleep(2); return "Result 2";};
+        Callable<String> task3 = () -> {TimeUnit.SECONDS.sleep(3); return "Result 3";};
 
+        // The execution will take about 5 seconds since we are using a SingleThreadExecutor
         List<Future<String>> futures = service.invokeAll(List.of(task1, task2, task3));
-        // When this line will be printed is unknown, since the main thread is not controlled by the ExecutorService
+        // This line will be printed as soon as all tasks get completed, since invokeAll() is synchronous
         System.out.println("All tasks requested!");
 
-        for(Future f : futures) {
+        for (Future f : futures) {
+            // isDone() always returns true
             System.out.println("Is it done now? " + (f.isDone() ? "yes" : "no"));
             System.out.println(f.get());
         }
@@ -94,10 +96,12 @@ public class SingleThreadExecutor {
             return "Runner 3";
         };
         System.out.println("The race will begin...");
+        /* invokeAny() executes the given tasks, returning the result of one that has completed successfully (without
+            throwing an exception), if any do. */
         String result = service.invokeAny(List.of(task1, task2, task3));
         // This line will always be printed after the tasks run, since invokeAny() is synchronous
         System.out.println("The race is over!");
 
-        System.out.println("And the winner is: " + result);
+        System.out.println("...and the winner is: " + result);
     }
 }

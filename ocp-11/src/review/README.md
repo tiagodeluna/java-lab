@@ -91,3 +91,14 @@
 
 **Result: ?? / ?? (??%)
 
+## Chapter 18 - Concurrency
+
+1. [ok] D,F
+2. [--] A,B //Correct = A,D
+3. [ok] A,C,D,F
+4. [ok] B,C
+5. [--] F //Correct = C
+6. [ok] C,E
+7. [ok] D
+8. [ok] A
+9. []
