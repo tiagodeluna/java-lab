@@ -1,14 +1,20 @@
 package review;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public abstract class Main {
 
     public static void main (String [] args) {
+        LocalDateTime dateTime = LocalDateTime.now();
+        dateTime.format(DateTimeFormatter.ISO_DATE_TIME);
+
         //System.out.println(reverseSentence("1 2 3"));
-        System.out.println(mostFrequentDigits(new int[]{25, 2, 5, 17, 91}));
+        //System.out.println(mostFrequentDigits(new int[]{25, 2, 5, 17, 91}));
     }
 
     static String reverseSentence(String sentence) {
