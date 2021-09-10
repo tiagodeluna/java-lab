@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * For this code to compile and run properly, you must install the H2 database and add the .jar to your classpath.
  */
-public class MyH2Connection {
+public class JDBCBasics {
     private static final String INSERT_SQL = "INSERT INTO animal VALUES (?, ?, ?)";
     private static final List<Animal> animals = List.of(
             new Animal(1, "Lion", 'A'),
